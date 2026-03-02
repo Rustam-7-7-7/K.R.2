@@ -59,6 +59,7 @@ class APIAdapter(AbstractAPIClient):
                 print(f"Найдено {len(self.aeroplanes['states'])} самолетов в воздушном пространстве {country}:")
                 # for state in self.aeroplanes['states']:
                 #     print(state)
+                return self.aeroplanes
             else:
                 print(f"Нет данных о самолетах в воздушном пространстве {country}.")
 
