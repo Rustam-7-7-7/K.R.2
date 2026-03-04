@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 import json
 import os
 
+
 # Абстрактный класс для работы с файлами
 class AbstractFileHandler(ABC):
 
@@ -19,6 +20,7 @@ class AbstractFileHandler(ABC):
     def delete_aircraft(self, aircraft_id):
         """Удаляет информацию о самолете."""
         pass
+
 
 # Класс для работы с JSON-файлами
 class JSONFileHandler(AbstractFileHandler):
@@ -61,6 +63,7 @@ class JSONFileHandler(AbstractFileHandler):
         with open(self._filename, 'w') as file:
             json.dump(data, file)
 
+
 # Пример использования класса Aircraft
 class Aircraft:
     def __init__(self, registration_country, callsign, velocity, altitude):
@@ -68,18 +71,3 @@ class Aircraft:
         self.callsign = callsign
         self.velocity = velocity
         self.altitude = altitude
-
-# # Пример использования
-# file_handler = JSONFileHandler()
-#
-# # Пример добавления самолета
-# aircraft = Aircraft('Switzerland', 'SWR438A', 189.7, 4267.2)
-# file_handler.add_aircraft(aircraft)
-#
-# # Пример получения данных о самолетах
-# aircrafts = file_handler.get_aircrafts()
-# print(aircrafts)
-#
-# # Пример удаления самолета
-# file_handler.delete_aircraft('SWR438A')
-# print(file_handler.get_aircrafts())

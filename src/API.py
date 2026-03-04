@@ -65,8 +65,3 @@ class APIAdapter(AbstractAPIClient):
 
         except RequestException as e:
             print(f"Произошла ошибка при запросе API: {e}")
-
-
-# Пример использования
-# api = APIAdapter()
-# api.get_aeroplanes('Canada')

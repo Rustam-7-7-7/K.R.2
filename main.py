@@ -2,8 +2,8 @@ from src.API import APIAdapter
 from src.files import JSONFileHandler, Aircraft
 
 
-# Функция для взаимодействия с пользователем
 def user_interaction():
+    ''' Функция для взаимодействия с пользователем. '''
     country = input("Введите название страны: ")
     api = APIAdapter()
     file_handler = JSONFileHandler()
@@ -29,19 +29,28 @@ def user_interaction():
 
     aeroplanes = file_handler.get_aircrafts()
 
-
     top_n = int(input("Введите количество самолетов для вывода в топ N: "))
     filter_words = input("Введите названия стран для фильтрации по стране регистрации: ").split()
-    altitude_range = input("Введите диапазон высот полета: ") # Пример: 100000 - 150000
+    altitude_range = input("Введите диапазон высот полета: ")  # Пример: 100000 - 150000
 
     from src.utils import filter_aeroplanes
 
     filtered_aeroplanes = filter_aeroplanes(aeroplanes, filter_words)
 
+    from src.utils import get_aeroplanes_by_altitude
+
     ranged_aeroplanes = get_aeroplanes_by_altitude(filtered_aeroplanes, altitude_range)
 
+    from src.utils import sort_aeroplanes
+
     sorted_aeroplanes = sort_aeroplanes(ranged_aeroplanes)
+
+    from src.utils import get_top_aeroplanes
+
     top_aeroplanes = get_top_aeroplanes(sorted_aeroplanes, top_n)
+
+    from src.utils import print_aeroplanes
+
     print_aeroplanes(top_aeroplanes)
 
 
