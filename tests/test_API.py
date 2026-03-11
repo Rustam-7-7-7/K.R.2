@@ -1,7 +1,8 @@
 import unittest
 from unittest.mock import patch, MagicMock
-from src.API import APIAdapter
 from requests import RequestException
+from src.API import APIAdapter
+
 
 class TestAPIAdapter(unittest.TestCase):
 
@@ -13,7 +14,8 @@ class TestAPIAdapter(unittest.TestCase):
         mock_osm_response.status_code = 200
 
         mock_opensky_response = MagicMock()
-        mock_opensky_response.json.return_value = {'states': [['call1', 'country1', 0, 0, 0, 0, 0, 100, False, 200, 0, 0, None, 0, 'squawk', False, 0]]}
+        mock_opensky_response.json.return_value = {
+            'states': [['call1', 'country1', 0, 0, 0, 0, 0, 100, False, 200, 0, 0, None, 0, 'squawk', False, 0]]}
         mock_opensky_response.status_code = 200
 
         mock_get.side_effect = [mock_osm_response, mock_opensky_response]
@@ -49,6 +51,7 @@ class TestAPIAdapter(unittest.TestCase):
         result = api_adapter.get_aeroplanes('TestCountry')
 
         self.assertIsNone(result)
+
 
 if __name__ == '__main__':
     unittest.main()

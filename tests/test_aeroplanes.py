@@ -1,6 +1,7 @@
 import unittest
 from src.aeroplanes import Aircraft
 
+
 class TestAircraft(unittest.TestCase):
 
     def test_initialization(self):
@@ -34,7 +35,7 @@ class TestAircraft(unittest.TestCase):
     def test_comparison_lt(self):
         # Тестируем оператор <
         aircraft1 = Aircraft("USA", "A123", 800, 10000)
-        aircraft2 = Aircraft("USA", "A124", 900, 10000)
+        aircraft2 = Aircraft("USA", "A124", 900, 11000)
         self.assertTrue(aircraft1 < aircraft2)
         self.assertFalse(aircraft2 < aircraft1)
 
@@ -47,9 +48,10 @@ class TestAircraft(unittest.TestCase):
     def test_comparison_le(self):
         # Тестируем оператор <=
         aircraft1 = Aircraft("USA", "A123", 800, 10000)
-        aircraft2 = Aircraft("USA", "A124", 900, 10000)
+        aircraft2 = Aircraft("USA", "A124", 900, 11000)
         self.assertTrue(aircraft1 <= aircraft2)
         self.assertTrue(aircraft1 <= aircraft1)
+
 
 if __name__ == '__main__':
     unittest.main()
